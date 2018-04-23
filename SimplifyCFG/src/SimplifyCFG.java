@@ -11,24 +11,28 @@ import java.util.*;
  * @author Ernest Urzua
  *
  */
-//Main class
-public class NFAtoDFA {
 
-    String[][] states = {
-        {"q1 ", "q1,q2 ", "lambda "},
-        {"q3 ", "lambda ", "q3 "},
-        {"lambda ", "q4 ", "lambda "},
-        {"q4 ", "q4 ", "lambda "},};
+//Main class
+public class SimplifyCFG {
+
+//    example of CFG to test ex 7
+//      S -> AaB | aaB
+//	A -> λ
+//	B -> bbA | λ
+    String[][] cfg = {
+        {"S " , "AaB ", "aaB "},
+        {"A ", null},
+        {"B ", "bbA ", null}};
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        NFAtoDFA nfa = new NFAtoDFA();
+        SimplifyCFG cfg = new SimplifyCFG();
         //Loading of input
         //Loading();
         //read user input from text file
-        nfa.ReadInput();
+        //cfg.ReadInput();
 
     }
 
@@ -66,10 +70,10 @@ public class NFAtoDFA {
             System.out.println();
             System.out.println();
 
-            System.out.print("Transistion table for NFA\n");
+            System.out.print("CFG \n");
             //Loop that prints out players name and round
-            for (int j = 0; j < states.length; j++) {
-                System.out.println(states[j][0] + states[j][1]);
+            for (int j = 0; j < cfg.length; j++) {
+                System.out.println(cfg[j][0] + cfg[j][1]);
             }
             // System.out.print(Arrays.deepToString(states));
             System.out.println();
@@ -103,7 +107,7 @@ public class NFAtoDFA {
         //check whether input is accepted by NFA
         while (array[k] != null) {
 
-            if (array[k] == states[0][0]);
+            if (array[k] == cfg[0][0]);
 
             System.out.println(array[k] + " Input accepted");
             k++;
